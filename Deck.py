@@ -1,7 +1,7 @@
-import Card
+from Card import Card
 import random
 
-class Deck(Card):
+class Deck:
 #This class should create the 52 card deck, deal, keep track of deck, and remove dealt cards
     def __init__(self):
         cardsInDeck = []
@@ -19,8 +19,18 @@ class Deck(Card):
     def shuffle_Deck(self):
         shuffle(self.cardsInDeck)
 
+    def __str__(self):
+        print_deck = ''
+
+        for i in range(len(self.cardsInDeck)):
+            print_deck += self.cardsInDeck[i].__str__() + "\n"
+        
+        return f"This Deck has {str(len(self.cardsInDeck))} Cards.\nFour suits: Spades, Hearts, Diamonds and Clubs.\nAnd 13 cards for each suit. \n" + print_deck
+
     # will remove the card from the deck
     def deal_card(self):
-        return self.cardsInDeck.pop()
+        return self.cardsInDeck.pop(0) #deals the card on top
 
-    
+#Testing
+deck1 = Deck()    
+print(deck1.__str__())
